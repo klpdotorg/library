@@ -1,3 +1,11 @@
+# Library Assignment
+
+from connection import *
+import csv
+import re
+
+path='/home/jagadeesh/klp/library/libentrydata/'
+
 def schoolidcheck():
 	cur=con.cursor()
 	filepointer=csv.writer(open(path+'csv/tocsv/schoolidcheck.csv','w'),delimiter='|',quotechar='\'')
