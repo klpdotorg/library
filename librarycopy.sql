@@ -24,3 +24,14 @@ CREATE OR REPLACE VIEW vw_libcopies as
        select * from dblink('host=localhost dbname=klplibmaster user=postgres password=qazwsx', 'select aksharabooknum from tb_libcopies')
        as t1 (aksharabooknum character varying(50)
 	);
+
+CREATE OR REPLACE VIEW vw_libtitles as
+       select * from dblink('host=localhost dbname=klplibmaster user=postgres password=qazwsx', 'select * from tb_libtitles')
+       as t1 (titleid integer,
+	titleno character varying(50),
+	language character varying(50),
+	publisher character varying(100),
+	agegroup character varying(100),
+	titlename character varying(500),
+	booklevel character varying(50)
+	);
