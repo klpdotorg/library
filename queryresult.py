@@ -63,7 +63,7 @@ def create_view_for_booknumbers():
 	cur.execute("create or replace view vw_booknumbers as select distinct(akshara_book_number) from libentry where ((length(akshara_book_number)>9 and length(akshara_book_number)<=15) and akshara_book_number not in(select distinct(titlename) from vw_libtitles where titlename in(select distinct(akshara_book_number) from libentry)))")
 
 def book_number_check():
-	print "Checcking booknumbers against libcopies this takes much time"
+	print "Checcking booknumbers against libcopies"
 	cur=con.cursor()
 	filepointer=csv.writer(open(path+'csv/tocsv/booknumcheck.csv','w'),delimiter='|',quotechar='\'')
 	header=['DEO','ISSUE DATE','BLOCK','KLP SCHOOL ID','SCHOOL NAME','NAME OF THE CHILD','KLP CHILD ID','CLASS','SECTION','AKSHARA BOOK NUMBER','RETURN DATE']
@@ -73,11 +73,8 @@ def book_number_check():
 	for row in result:
 		filepointer.writerow(row)
 #		print row
-	print "Checking booknumbers against libcopies completed"
+	print "Checking booknumbers against libcopies completed" 
 	
-
-
-
 schoolidcheck()
 titlesfound()
 book_no_len_less_than_10()

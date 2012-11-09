@@ -21,10 +21,10 @@ echo loaded functions
 
 # Create schema
 echo creating schema
-#s....psql -U ${OWNER} -d ${DBNAME} -f ${SCRIPT_DIR}/${DBNAME}.sql
+#sudo -u postgres psql -U ${OWNER} -d ${DBNAME} -f ${SCRIPT_DIR}/${DBNAME}.sql
 
 echo creating connection to postgres
-python ${SCRIPT_DIR}/connection.py
+#python ${SCRIPT_DIR}/connection.py
 
 echo "Reading csv Files writing to load.sql file"
 # Writing to .sql file
@@ -33,5 +33,10 @@ echo "Reading csv Files writing to load.sql file"
 #loading data to database
 #sudo -u ${OWNER} psql -d ${DBNAME} -f ${SCRIPT_DIR}/load.sql
 
-#Searching result
-python ${SCRIPT_DIR}/queryresult.py
+echo Writing result
+#python ${SCRIPT_DIR}/queryresult.py
+
+echo aggregate functions
+sudo -u ${OWNER} psql -d ${DBNAME} -f ${SCRIPT_DIR}/Agg.sql
+
+
