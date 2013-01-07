@@ -1,0 +1,71 @@
+$def with (levels,values)
+
+
+
+<html>
+  <head>
+    <script type="text/javascript" src='/scripts/jsapi'>
+    </script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart","table"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+	//var data=[];
+        var level = google.visualization.arrayToDataTable(
+[['$levels[0][0]'
+$for row in levels[0][1:]:
+	,'$row'
+]
+$for row in levels[1:]:
+	,['$row[0]'
+	$for val in row[1:]:
+		,$val
+	]
+]
+
+);
+
+        var options = {
+          title: 'Overall borrowing',
+	  pointSize: 5,
+	  vAxis:{title:'Count'},
+	  hAxis:{title:'Month'},
+	  legend:{position:'none'}
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+	var table = new google.visualization.Table(document.getElementById('table_div'));
+
+       	chart.draw(level, options);
+	table.draw(level);
+   }
+	function changechart(){
+	var button=document.getElementById('change');
+	if(button.value=='Change to Table View') {
+		button.value='Change to Line Chart';
+		document.getElementById('chart_div').style.display='none';
+		document.getElementById('table_div').style.display='block';
+		drawChart();
+	}
+	else {
+		button.value='Change to Table View';
+		document.getElementById('chart_div').style.display='block';
+		document.getElementById('table_div').style.display='none';
+		drawChart();
+	}
+    }
+    </script>
+  </head>
+  <body>
+	<form>	
+	<center>School : $values["schoolname"]  &nbsp;&nbsp;&nbsp;&nbsp;
+$if values["clas"]!='0':
+	Class : $values["clas"]
+$else:
+	Class : All
+<center>
+   	<center><div id="chart_div" style="width: auto; height: 400px; display: block"></div><br>
+	<div id="table_div" style="width: 200px; height: 400px; display: none"></div>
+	<input type='button' id='change' name='change' value='Change to Table View' onclick="changechart();"></center>
+  </body>
+</html>
