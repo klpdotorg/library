@@ -1,0 +1,100 @@
+$def with (value,leveldata,langdata,borrowdata,clas,year,total)
+
+<html>
+<head><title>
+</title>
+</head>
+<body>
+<link href="../scripts/libstyle.css" rel="stylesheet" type="text/css">
+<script>
+var level = 
+[['$leveldata[0][0]'
+$for row in leveldata[0][1:]:
+	,'$row'
+]
+$for row in leveldata[1:]:
+	,['$row[0]','$row[1]','$row[2]'
+	$for val in row[3:]:
+		,$val
+	]
+];
+
+var lang = 
+[['$langdata[0][0]'
+$for row in langdata[0][1:]:
+	,'$row'
+]
+$for row in langdata[1:]:
+	,['$row[0]','$row[1]','$row[2]'
+	$for val in row[3:]:
+		,$val
+	]
+];
+
+var borrow = 
+[['$borrowdata[0][0]'
+$for row in borrowdata[0][1:]:
+	,'$row'
+]
+$for row in borrowdata[1:]:
+	,['$row[0]','$row[1]','$row[2]','$row[3]'
+	$for val in row[4:]:
+		,$val
+	]
+];
+
+var classes = 
+['$clas[0]'
+$for row in clas[1:]:
+	,'$row'
+]
+
+var totals =
+[['$total[0][0]','$total[0][1]']
+$for row in total[1:]:
+	,['$row[0]','$row[1]']
+];
+
+</script>
+<script type="text/javascript" src="../scripts/jsapi"></script>
+<script type="text/javascript" src="../scripts/libchart.js"></script>
+<div class="container" id="main">
+<table width="100%" height="100%">
+<tr>
+<td width="18%">
+<div div id='displays' name='displays' align="right" style="margin-right:20px">
+<select id="type" name="type" onchange="display(this.value,1)">
+<option value="agg">Aggregate</option>
+<option value="borrow">Borrowing</option>
+</select><br><br>
+Year : <select id="acyear" name="acyear" onchange="changedata()">
+$for row in year:
+	<option value="$row">$row</option>
+</select><br><br>
+Class : <select id="clas" name="clas" onchange="changedata()">
+<option value="0">All</option>
+$for row in clas:
+	<option value="$row">$row</option>
+</select><br>
+</div>
+</td><td width="82%" class="thetable">
+<font size="3"><center>School Name : $borrowdata[1][3] &nbsp;&nbsp;&nbsp;<div id="info"></div><center></font>
+<div id="aggchart" name="aggchart">
+<center>
+	<div id="chart_div" style="width: 100%; height: 400px; display: block;"></div><br>
+	<div id="table_div" style="width: auto; height: 400px; display: none;"></div>
+	<input type='button' id='switch' name='switch' value='Switch to Language' onclick="changetype(this.value)">&nbsp;&nbsp;&nbsp;
+	<input type='button' id='change' name='change' value='Change to Table View' onclick="changechart(this.value)"></center>
+</div>
+	<div id="borrowchart" name="borrowchart">
+		<center>
+		<div id="chart_div1" style="width: auto; height: 400px; display: block;"></div><br>
+		<div id="table_div1" style="width: 200px; height: 400px; display: none;"></div>
+		<input type='button' id='change1' name='change1' value='Change to Table View' onclick="changeborrowchart(this.value)"></center>
+	</div>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

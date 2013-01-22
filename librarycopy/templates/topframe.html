@@ -1,0 +1,49 @@
+$def with (dists,blcks,clsts,schls)
+<html>
+<head>
+</head>
+<body>
+<link href="scripts/libstyle.css" rel="stylesheet" type="text/css">
+<script>
+var district=new Array();
+var block=new Array();
+var cluster=new Array();
+var school=new Array();
+var i,j;
+
+i=0;
+$for index,blck in enumerate(blcks):
+	temp=new Array();
+	temp[0]='$blck[0]'; temp[1]='$blck[1]'; temp[2]='$blck[2]'; block[$index]=temp;
+$for index,clst in enumerate(clsts):
+	temp=new Array();
+	temp[0]='$clst[0]'; temp[1]='$clst[1]'; temp[2]='$clst[2]'; cluster[$index]=temp;
+$for index,schl in enumerate(schls):
+	temp=new Array();
+	temp[0]='$schl[0]'; temp[1]='$schl[1]'; temp[2]='$schl[2]'; school[$index]=temp;
+
+</script>
+<script type="text/javascript" src="scripts/topframe.js"></script>
+<form id="form1" name="form1" method="post">
+<div class="container" id="main"><center><image src="images/bar.gif" style="height:3;width:100%;"><br><br>
+District : <select id="dist" name="dist" onchange="filldropdown(this.value,'blck');">
+	<option value="0">Select District</option>
+$for dist in dists:
+	<option value="$dist[0]">$dist[1]</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;
+Block : <select id="blck" name="blck" onchange="filldropdown(this.value,'clst')">
+	<option value="0">Select Block</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;
+Cluster : <select id="clst" name="clst" onchange="filldropdown(this.value,'schl')">
+	<option>Select Cluster</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;
+School : <select id="schl" name="schl" onchange="callchart(this.value)">
+	<option>Select School</option>
+</select>
+</center><br><image src="images/bar.gif" style="height:3;width:100%;">
+</div>
+</form>
+<script>
+</script>
+</body>
+</html>
