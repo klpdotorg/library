@@ -1,0 +1,17 @@
+/* Main div tag */
+#main{
+margin-left:50px;
+margin-right:50px;
+}
+
+select#type,#acyear,#clas
+{
+width:110px;
+}
+
+.thetable{
+border-style:solid;
+border-right:0px;
+border-top:0px;
+border-bottom:0px;
+}

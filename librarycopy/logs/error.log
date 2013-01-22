@@ -1,12 +1,2 @@
-[Mon Jan 07 14:12:23 2013] [info] [client 127.0.0.1] mod_wsgi (pid=10142, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:12:57 2013] [info] [client 127.0.0.1] mod_wsgi (pid=10227, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:13:22 2013] [info] [client 127.0.0.1] mod_wsgi (pid=10312, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:16:02 2013] [info] [client 127.0.0.1] mod_wsgi (pid=10407, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:20:18 2013] [info] [client 127.0.0.1] mod_wsgi (pid=10544, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:22:07 2013] [info] [client 127.0.0.1] mod_wsgi (pid=10633, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:23:16 2013] [info] [client 127.0.0.1] mod_wsgi (pid=10730, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:25:33 2013] [info] [client 127.0.0.1] mod_wsgi (pid=10884, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:26:07 2013] [info] [client 127.0.0.1] mod_wsgi (pid=10968, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:27:16 2013] [info] [client 127.0.0.1] mod_wsgi (pid=11059, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:28:03 2013] [info] [client 127.0.0.1] mod_wsgi (pid=11144, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
-[Mon Jan 07 14:28:43 2013] [info] [client 127.0.0.1] mod_wsgi (pid=11228, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/librarycopy/library.wsgi'.
+[Tue Jan 22 15:19:40 2013] [info] [client 127.0.0.1] mod_wsgi (pid=7427, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/library123/library.wsgi'.
+[Tue Jan 22 15:25:57 2013] [info] [client 127.0.0.1] mod_wsgi (pid=7535, process='iredadmin', application=''): Loading WSGI script '/home/jagadeesh/klp/www/library123/library.wsgi'.
