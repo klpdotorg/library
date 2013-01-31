@@ -3,9 +3,9 @@ google.setOnLoadCallback(load);
 
 var levels=[],langs=[],borrows=[];
 var options={
-          title: 'Library Information',
+          title: 'Based On Level',
 	  pointSize: 5,
-	  vAxis:{title:'Count %', format: '#', viewWindowMode: 'explicit',viewWindow: {min: 0}},
+	  vAxis:{title:'Avg no of transactions per student', viewWindowMode: 'explicit',viewWindow: {min: 0}},
 	  hAxis:{title:'Month'},
 	  smoothLine: 'true',
 	  animation:{
@@ -14,24 +14,35 @@ var options={
       		}
         };
 
-function load(){
+function load(){/*
 	document.getElementById('aggchart').style.display='block';
-	document.getElementById('borrowchart').style.display='none';
+	document.getElementById('borrowchart').style.display='none';*/
 	charttable('2011-2012','0');
 	draw_chart(levels,1);
 }
 
 function display(value,type){
+	var type=document.getElementById('change').value;
+	var data;
 	if(value=="agg"){
-		document.getElementById('aggchart').style.display='block';
-		document.getElementById('borrowchart').style.display='none';
-		draw_chart(levels,1);
+		options['title']='Total transaction';
+		options['legend']={position:'none'};
+		data=borrows;
 	}
-	else if(value=="borrow"){
-		document.getElementById('aggchart').style.display='none';
-		document.getElementById('borrowchart').style.display='block';
-		draw_chart1(borrows,1);
+	else if(value=="blevel"){
+		options['title']='Based On Level';
+		options['legend']={position:'right'};
+		data=levels
 	}
+	else if(value=="blang"){
+		options['title']='Based On Language';
+		options['legend']={position:'right'};
+		data=langs;		
+	}
+	if(type=="Change to Table View")
+		draw_chart(data,1);
+	else
+		draw_chart(data,2);
 }
 
 function charttable(year,clas){
@@ -104,7 +115,7 @@ function charttable(year,clas){
 			}
 		}
 		for(k=1;k<temp.length;k++){
-			temp[k]=parseInt(temp[k])*100/parseInt(total)/4;
+			temp[k]=parseInt(temp[k])/parseInt(total);
 		}
 		//alert(temp);
 		levels.addRow(temp);
@@ -138,7 +149,7 @@ function charttable(year,clas){
 			}
 		}
 		for(k=1;k<temp.length;k++){
-			temp[k]=parseInt(temp[k])*100/parseInt(total)/4;
+			temp[k]=parseInt(temp[k])/parseInt(total);
 		}
 		langs.addRow(temp);
 		temp=[mon[i],0];
@@ -157,7 +168,7 @@ function charttable(year,clas){
 			}
 		}
 		for(k=1;k<temp.length;k++){
-			temp[k]=parseInt(temp[k])*100/parseInt(total)/4;
+			temp[k]=parseInt(temp[k])/parseInt(total);
 		}
 		borrows.addRow(temp);
 	}
@@ -173,33 +184,33 @@ function draw_chart(data,type){
 		table.draw(data);
 }
 
-function draw_chart1(data,type){
-	var chart = new google.visualization.LineChart(document.getElementById('chart_div1'));
-	var table = new google.visualization.Table(document.getElementById('table_div1'));
-	if(type==1)
-		chart.draw(data,options);
-	else
-		table.draw(data);
-}
-
 function changedata(){
 	year=document.getElementById('acyear').value;
 	clas=document.getElementById('clas').value;
 	charttable(year,clas);
-	if(document.getElementById('switch').value=="Switch to Level")
-		if(document.getElementById('change').value=="Change to Table View")
-			draw_chart(langs,1);
-		else
-			draw_chart(langs,2);
+	var value=document.getElementById('change').value;
+	var type=document.getElementById('type').value;
+	var data;
+	if(type=="blevel"){
+		options['title']='Based On Level';
+		options['legend']={position:'right'};
+		data=levels;
+	}
+	else if(type=="blang"){
+		options['title']='Based On Language';
+		options['legend']={position:'right'};
+		data=langs;
+	}
+	else {
+		options['title']='Total transaction';
+		options['legend']={position:'none'};
+		data=borrows;
+	}
+	if(value=="Change to Table View"){
+		draw_chart(data,1);
+	}
 	else
-		if(document.getElementById('change').value=="Change to Table View")
-			draw_chart(levels,1);
-		else
-			draw_chart(levels,2);
-	if(document.getElementById('change1').value=="Change to Table View")
-		draw_chart1(borrows,1);	
-	else
-		draw_chart1(borrows,2);
+		draw_chart(data,2);
 }
 
 function changetype(value){
@@ -220,38 +231,35 @@ function changetype(value){
 }
 
 function changechart(value){
+	var type=document.getElementById('type').value;
+	var data;
+	if(type=="blevel"){
+		options['title']='Based On Level';
+		options['legend']={position:'right'};
+		data=levels;
+	}
+	else if(type=="blang"){
+		options['title']='Based On Language';
+		options['legend']={position:'right'};
+		data=langs;
+	}
+	else {
+		options['title']='Total transaction';
+		options['legend']={position:'none'};
+		data=borrows;
+	}
 	if(value=="Change to Table View"){
 		document.getElementById('change').value="Change to Line Chart";
 		document.getElementById('chart_div').style.display="none";
 		document.getElementById('table_div').style.display="block";
-		if(document.getElementById('switch').value=="Switch to Level")
-			draw_chart(langs,2);
-		else
-			draw_chart(levels,2);
+		draw_chart(data,2);
 	}
 	else{
 		
 		document.getElementById('change').value="Change to Table View";
 		document.getElementById('chart_div').style.display="block";
 		document.getElementById('table_div').style.display="none";
-		if(document.getElementById('switch').value=="Switch to Level")
-			draw_chart(langs,1);
-		else
-			draw_chart(levels,1);
+		draw_chart(data,1);
 	}
 }
 
-function changeborrowchart(value){
-	if(value=="Change to Table View"){
-		document.getElementById('change1').value="Change to Line Chart";
-		document.getElementById('chart_div1').style.display="none";
-		document.getElementById('table_div1').style.display="block";
-		draw_chart1(borrows,2);
-	}
-	else{
-		document.getElementById('change1').value="Change to Table View";
-		document.getElementById('chart_div1').style.display="block";
-		document.getElementById('table_div1').style.display="none";
-		draw_chart1(borrows,1);
-	}
-}

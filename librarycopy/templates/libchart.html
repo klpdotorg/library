@@ -63,9 +63,10 @@ $for row in total[1:]:
 <tr>
 <td width="18%">
 <div div id='displays' name='displays' align="right" style="margin-right:20px">
-<select id="type" name="type" onchange="display(this.value,1)">
+<select id="type" name="type" style="width:175px"onchange="display(this.value,1)">
+<option value="blevel">Borrow By Level</option>
+<option value="blang">Borrow By Language</option>
 <option value="agg">Aggregate</option>
-<option value="borrow">Borrowing</option>
 </select><br><br>
 Year : <select id="acyear" name="acyear" onchange="changedata()">
 $for row in year:
@@ -83,15 +84,8 @@ $for row in clas:
 <center>
 	<div id="chart_div" style="width: 100%; height: 400px; display: block;"></div><br>
 	<div id="table_div" style="width: auto; height: 400px; display: none;"></div>
-	<input type='button' id='switch' name='switch' value='Switch to Language' onclick="changetype(this.value)">&nbsp;&nbsp;&nbsp;
 	<input type='button' id='change' name='change' value='Change to Table View' onclick="changechart(this.value)"></center>
 </div>
-	<div id="borrowchart" name="borrowchart">
-		<center>
-		<div id="chart_div1" style="width: auto; height: 400px; display: block;"></div><br>
-		<div id="table_div1" style="width: 200px; height: 400px; display: none;"></div>
-		<input type='button' id='change1' name='change1' value='Change to Table View' onclick="changeborrowchart(this.value)"></center>
-	</div>
 </td>
 </tr>
 </table>
